@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Analysis Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #jobListings div {
+            border: 1px solid #ccc;
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #jobListings div:hover {
+            background-color: #f9f9f9;
+        }
+        .filter-sort-section {
+            margin-bottom: 20px;
+        }
+    
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 500px;
+        }
+        .modal-header {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .modal-content {
+            margin-bottom: 20px;
+        }
+        .modal-close {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            float: right;
+        }
+        .modal-close:hover {
+            background-color: #c9302c;
+        }
+        /* Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <h1>Job Analysis Project</h1>
+
+    <div class="filter-sort-section">
+        <label for="fileUpload">Upload JSON File:</label>
+        <input type="file" id="fileUpload"><br><br>
+
+        <label for="levelFilter">Filter by Level:</label>
+        <select id="levelFilter">
+            <option value="">All Levels</option>
+        </select>
+
+        <label for="typeFilter">Filter by Type:</label>
+        <select id="typeFilter">
+            <option value="">All Types</option>
+        </select>
+
+        <label for="skillFilter">Filter by Skill:</label>
+        <select id="skillFilter">
+            <option value="">All Skills</option>
+        </select>
+
+        <label for="sortOptions">Sort by:</label>
+        <select id="sortOptions">
+            <option value="title-asc">Title (A-Z)</option>
+            <option value="title-desc">Title (Z-A)</option>
+            <option value="posted-latest">Posted Time (Latest)</option>
+            <option value="posted-earliest">Posted Time (Earliest)</option>
+        </select>
+
+        <button id="applyFilters">Apply Filters</button>
+    </div>
+
+    <h2>Job Listings</h2>
+    <div id="jobListings"></div>
+
+    
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="jobModal">
+        <button class="modal-close" id="closeModal">Close</button>
+        <div class="modal-header" id="modalTitle"></div>
+        <div class="modal-content">
+            <p><strong>Type:</strong> <span id="modalType"></span></p>
+            <p><strong>Level:</strong> <span id="modalLevel"></span></p>
+            <p><strong>Skill:</strong> <span id="modalSkill"></span></p>
+            <p><strong>Description:</strong> <span id="modalDetail"></span></p>
+            <p><strong>Posted:</strong> <span id="modalPosted"></span></p>
+        </div>
+    </div>
+    <script src="JobAnalysis.js"></script>
+   
+</body>
+</html>
